@@ -9,12 +9,9 @@ import './Home.css'
 
 import img1 from "../../../assets/BoxModsPhotos/G-Class-V2.jpeg";
 import { Helmet } from 'react-helmet-async';
-import axios from "axios";
+
 
 const Home = () => {
-  axios.get("http://localhost:5000/products").then((data) => {
-    console.log(data.data);
-  })
   return (
     <>
         <Helmet>

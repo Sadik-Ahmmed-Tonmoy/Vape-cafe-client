@@ -35,7 +35,7 @@ const Navbar = () => {
           </li>
           <li>
            
-                <NavLink>Disposables</NavLink>
+                <NavLink to="/components/disposables">Disposables</NavLink>
                
           </li>
           <li tabIndex={0}>
