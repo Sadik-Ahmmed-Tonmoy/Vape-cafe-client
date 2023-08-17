@@ -9,26 +9,31 @@ import './Home.css'
 
 import img1 from "../../../assets/BoxModsPhotos/G-Class-V2.jpeg";
 import { Helmet } from 'react-helmet-async';
+import axios from "axios";
 
 const Home = () => {
+  axios.get("http://localhost:5000/products").then((data) => {
+    console.log(data.data);
+  })
   return (
     <>
         <Helmet>
         <title>Vape Cafe | Home</title>
       </Helmet>
+      
       <Banner />
       <SwiperHome />
       <Title Heading={"All Devices"} SubHeading={"View All"} />
 
-      <div className="flex">
+      <div className="md:flex">
         <div className="md:w-3/12 mx-14 my-auto">
-          <BoxMods />
+        <BoxMods />
         </div>
         <div className="divider lg:divider-horizontal">OR</div>
         <div className="w-full bg-Parallax bg-fixed ">
-          <div className="mx-auto grid grid-cols-3">
+          <div className="mx-auto md:grid grid-cols-3">
             <Card
-              w={"w-64"}
+              w={"md:w-64"}
               productImage={img1}
               productName={"YIHI SXMINI G CLASS V2 200W"}
               price={"16,500.00"}

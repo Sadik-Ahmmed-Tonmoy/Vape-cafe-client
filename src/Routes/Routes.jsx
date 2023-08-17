@@ -3,6 +3,8 @@ import {
   } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from './../Pages/Home/Home/Home';
+import Components from './../Layout/Components/Components';
+import HighEnd from './../Pages/HighEnd/HighEnd';
 
   export const router = createBrowserRouter([
     {
@@ -16,4 +18,14 @@ import Home from './../Pages/Home/Home/Home';
         },
       ],
     },
+    {
+      path: "/components",
+      element: <Components/>,
+      children: [
+        {
+          path: "/components/highEnd",
+          element: <HighEnd/>,
+        },
+      ]
+    }
   ]);
