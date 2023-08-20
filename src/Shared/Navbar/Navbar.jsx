@@ -1,6 +1,27 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { AuthContext } from "../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+  const handleLogout = () => {
+    logOut()
+      .then(() => {
+        Swal.fire({
+          position: "top",
+          icon: "success",
+          title: "Logged Out",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log(error);
+      });
+  };
+
   const NavItems = (
     <>
       <li tabIndex={0}>
@@ -99,13 +120,35 @@ const Navbar = () => {
             {NavItems}
           </ul>
         </div>
-      <Link to="/">  <a className="btn btn-ghost normal-case text-xl">Vape-Cafe</a></Link>
+        <Link to="/">
+          <a className="btn btn-ghost normal-case text-xl">Vape-Cafe</a>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex z-10">
         <ul className="menu menu-horizontal px-1">{NavItems}</ul>
       </div>
       <div className="navbar-end">
-        <button className="btn btn-outline btn-primary"><Link to="/userLogin">Login</Link></button>
+        {user?.photoURL && (
+          <img
+            referrerPolicy="no-referrer"
+            className="rounded-full h-12 w-12 mx-2 hidden md:block"
+            title={user?.displayName}
+            src={user?.photoURL}
+            alt=""
+          />
+        )}
+        {user ? (
+          <button
+            onClick={handleLogout}
+            className="btn btn-outline btn-primary"
+          >
+            Logout
+          </button>
+        ) : (
+          <button className="btn btn-outline btn-primary">
+            <Link to="/userLogin">Login</Link>
+          </button>
+        )}
       </div>
     </div>
   );

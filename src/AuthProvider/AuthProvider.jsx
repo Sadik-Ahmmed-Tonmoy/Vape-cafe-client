@@ -4,6 +4,7 @@ import {
   createUserWithEmailAndPassword,
   getAuth,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
@@ -32,9 +33,15 @@ console.log(user);
 
   // update user name and image
   const updateUserNameAndImage = (name, image) => {
+    setLoading(true)
 return updateProfile(auth.currentUser, {
   displayName: name, photoURL: image
 })
+  }
+
+  // Login user
+  const logIn = (email, password) => {
+return signInWithEmailAndPassword(auth, email, password)
   }
 
   //   logout
@@ -46,10 +53,10 @@ return updateProfile(auth.currentUser, {
   // current user
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
+   
         setUser(currentUser);
-        setLoading(currentUser);
-      }
+        setLoading(false);
+      
     });
     return () => {
       return unsubscribe();
@@ -62,11 +69,12 @@ return updateProfile(auth.currentUser, {
     loading,
     createUser,
     updateUserNameAndImage,
+    logIn,
     googleLogin,
     logOut,
   };
   return (
-    <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
+    <AuthContext.Provider value={authInfo}>{ children }</AuthContext.Provider>
   );
 };
 
