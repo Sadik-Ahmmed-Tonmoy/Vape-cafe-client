@@ -3,10 +3,10 @@ import {
   } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from './../Pages/Home/Home/Home';
-import Components from './../Layout/Components/Components';
-import HighEnd from './../Pages/HighEnd/HighEnd';
 import Login from './../Pages/Login/Login';
 import SignUp from './../Pages/SignUp/SignUp';
+import ComponentsHome from './../Pages/ComponentsHome/ComponentsHome';
+import Dashboard from './../Layout/Dashboard/Dashboard';
 
   export const router = createBrowserRouter([
     {
@@ -29,12 +29,12 @@ import SignUp from './../Pages/SignUp/SignUp';
       ],
     },
     {
-      path: "/components",
-      element: <Components/>,
+      path: "/Dashboard",
+      element: <Dashboard/>,
       children: [
         {
-          path: "/components/highEnd",
-          element: <HighEnd/>,
+          path: "/Dashboard/:category",
+          element: <ComponentsHome/>,
         },
       ]
     }

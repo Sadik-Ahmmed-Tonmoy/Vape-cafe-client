@@ -2,11 +2,11 @@
 
 const Card = ({productImage, productName, price, w}) => {
   return (
-    <div className={`card ${w} bg-base-100 shadow-xl m-2 mx-auto`}>
+    <div className={`card ${w} bg-base-100 shadow-xl m-4`}>
       <figure className="px-5 pt-5">
         <img
           src={productImage}
-          alt=""
+          alt={productName}
           className="rounded-xl"
         />
       </figure>

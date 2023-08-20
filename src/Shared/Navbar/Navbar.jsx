@@ -1,9 +1,21 @@
 import { useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import PathName from "../../Components/PathName/PathName";
+import { FaHome } from "react-icons/fa";
+import { MdOutlinePayments } from "react-icons/md";
 
 const Navbar = () => {
+  
+  const Devices = ["High End", "Box Mods", "Starter Kits", "Pod System"]
+  const Atomizers = ["Rebuildables", "SUB-OHM Tanks"]
+  const E_Liquids = ["Nicsalt", "Free Base"]
+  const Accessories = ["Replacement Coils, Pod & RBA", "Vape Accessories", "Rebuildable Materials", "Batteries & Chargers"]
+
+  const location = useLocation();
+  const isDashboard = location.pathname.includes('/Dashboard');
+
   const { user, logOut } = useContext(AuthContext);
   const handleLogout = () => {
     logOut()
@@ -22,79 +34,43 @@ const Navbar = () => {
       });
   };
 
-  const NavItems = (
+  const HomeNavItems = (
     <>
-      <li tabIndex={0}>
-        <details>
-          <summary>Devices</summary>
-          <ul className="p-2 md:w-32">
-            <li className="mb-1">
-              <NavLink to="/components/highEnd">High End</NavLink>
-            </li>
-            <li className="mb-1">
-              <NavLink>Box Mods</NavLink>
-            </li>
-            <li className="mb-1">
-              <NavLink>Starter Kits</NavLink>
-            </li>
-            <li className="mb-1">
-              <NavLink>Pod Systems</NavLink>
-            </li>
-          </ul>
-        </details>
-      </li>
-      <li tabIndex={0}>
-        <details>
-          <summary>Atomizers</summary>
-          <ul className="p-2 md:w-32">
-            <li className="mb-1">
-              <NavLink>Rebuildables</NavLink>
-            </li>
-            <li className="mb-1">
-              <NavLink>SUB-OHM Tanks</NavLink>
-            </li>
-          </ul>
-        </details>
-      </li>
-      <li tabIndex={0}>
-        <details>
-          <summary>E-Liquids</summary>
-          <ul className="p-2 md:w-32">
-            <li className="mb-1">
-              <NavLink>Nicsalt</NavLink>
-            </li>
-            <li className="mb-1">
-              <NavLink>Free Base</NavLink>
-            </li>
-          </ul>
-        </details>
-      </li>
-      <li tabIndex={0}>
-        <details>
-          <summary>Accessories</summary>
-          <ul className="p-2 md:w-32">
-            <li className="mb-1">
-              <NavLink>Replacement Coils, Pod & RBA</NavLink>
-            </li>
-            <li className="mb-1">
-              <NavLink>Vape Accessories</NavLink>
-            </li>
-            <li className="mb-1">
-              <NavLink>Rebuildable Materials</NavLink>
-            </li>
-            <li className="mb-1">
-              <NavLink>Batteries & Chargers</NavLink>
-            </li>
-          </ul>
-        </details>
-      </li>
-      <li>
-        <NavLink to="/components/disposables">Disposables</NavLink>
-      </li>
-    </>
+    <PathName heading="Devices" titles={Devices}/>
+    <PathName heading="Atomizers" titles={Atomizers}/>
+    <PathName heading="E-Liquids" titles={E_Liquids}/>
+    <PathName heading="Accessories" titles={Accessories}/>   
+       <li>
+         <NavLink  className={({ isActive }) =>
+           isActive
+             ? "text-blue-600 font-bold"
+             : ""
+         }  to="/Dashboard/disposables">Disposables</NavLink>
+       </li>
+     </>
   );
+
+  const DashboardNavItems = (
+    <>
+   <li>
+         <NavLink  className={({ isActive }) =>
+           isActive
+             ? "text-blue-600 font-bold"
+             : ""
+         }  to="/"><FaHome/>Home</NavLink>
+       </li>
+   <li>
+         <NavLink  className={({ isActive }) =>
+           isActive
+             ? "text-blue-600 font-bold"
+             : ""
+         }  to="/"><MdOutlinePayments/>Payment History</NavLink>
+       </li>
+     </>
+  );
+ 
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-base-200">
       <div className="navbar-start">
         <div className="dropdown z-10">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -115,9 +91,9 @@ const Navbar = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52"
           >
-            {NavItems}
+           { isDashboard? DashboardNavItems : HomeNavItems }
           </ul>
         </div>
         <Link to="/">
@@ -125,7 +101,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex z-10">
-        <ul className="menu menu-horizontal px-1">{NavItems}</ul>
+        <ul className="menu menu-horizontal px-1">{ isDashboard? DashboardNavItems : HomeNavItems }</ul>
       </div>
       <div className="navbar-end">
         {user?.photoURL && (

@@ -36,31 +36,31 @@ const Home = () => {
               price={"16,500.00"}
             />
             <Card
-              w={"w-64"}
+              w={"md:w-64"}
               productImage={img1}
               productName={"YIHI SXMINI G CLASS V2 200W"}
               price={"16,500.00"}
             />
             <Card
-              w={"w-64"}
+              w={"md:w-64"}
               productImage={img1}
               productName={"YIHI SXMINI G CLASS V2 200W"}
               price={"16,500.00"}
             />
             <Card
-              w={"w-64"}
+             w={"md:w-64"}
               productImage={img1}
               productName={"YIHI SXMINI G CLASS V2 200W"}
               price={"16,500.00"}
             />
             <Card
-              w={"w-64"}
+              w={"md:w-64"}
               productImage={img1}
               productName={"YIHI SXMINI G CLASS V2 200W"}
               price={"16,500.00"}
             />
             <Card
-              w={"w-64"}
+             w={"md:w-64"}
               productImage={img1}
               productName={"YIHI SXMINI G CLASS V2 200W"}
               price={"16,500.00"}
