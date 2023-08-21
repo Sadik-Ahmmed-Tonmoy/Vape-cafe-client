@@ -1,11 +1,13 @@
+import { Fade } from "react-awesome-reveal";
 import { Link } from "react-router-dom";
 
 
-const Card = ({ w, product}) => {
+const Card = ({w, product}) => {
   const {image, name, price, _id}=product;
 
   return (
-    <div className={`card ${w} bg-base-100 shadow-xl m-4`}>
+<Fade>
+<div className={`card w-auto bg-base-100 shadow-xl m-4`}>
       <figure className="px-5 pt-5">
         <img
           src={image}
@@ -21,6 +23,7 @@ const Card = ({ w, product}) => {
         </div>
       </div>
     </div>
+</Fade>
   );
 };
 

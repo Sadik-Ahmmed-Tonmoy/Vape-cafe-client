@@ -4,22 +4,29 @@ import SwiperHome from "../SwiperHome/SwiperHome";
 import Title from "../../../Shared/Title/Title";
 import BoxMods from "../BoxMods/BoxMods";
 import Card from "../../../Components/Card/Card";
-
 import './Home.css'
+import { Fade } from "react-awesome-reveal";
+import useAllProduct from "../../../Hooks/useAllProduct";
+import { Parallax } from 'react-parallax';
+import img from "../../../assets/photos/paralluxPhoto.jpg"
+import { Link } from "react-router-dom";
 
-import img1 from "../../../assets/BoxModsPhotos/G-Class-V2.jpeg";
-import { Helmet } from 'react-helmet-async';
 
 
 const Home = () => {
+
+const [allProducts] = useAllProduct()
+console.log(allProducts);
+
   return (
     <>
-        <Helmet>
-        <title>Vape Cafe | Home</title>
-      </Helmet>
-      
-      <Banner />
-      <SwiperHome />
+        
+    
+      {/* Carousel */}
+      <Fade> <Banner /></Fade>
+      {/* swiper */}
+      <Fade> <SwiperHome /></Fade>
+     
       <Title Heading={"All Devices"} SubHeading={"View All"} />
 
       <div className="md:flex">
@@ -27,50 +34,23 @@ const Home = () => {
         <BoxMods />
         </div>
         <div className="divider lg:divider-horizontal">OR</div>
-        <div className="w-full bg-Parallax bg-fixed ">
+        <Parallax
+        blur={{ min: -15, max: 15 }}
+        bgImage={img}
+        bgImageAlt="Vape"
+        className="rounded-3xl"
+    >
+       <div className="w-full bg-fixed ">
           <div className="mx-auto md:grid grid-cols-3">
-            <Card
-              w={"md:w-64"}
-              productImage={img1}
-              productName={"YIHI SXMINI G CLASS V2 200W"}
-              price={"16,500.00"}
-            />
-            <Card
-              w={"md:w-64"}
-              productImage={img1}
-              productName={"YIHI SXMINI G CLASS V2 200W"}
-              price={"16,500.00"}
-            />
-            <Card
-              w={"md:w-64"}
-              productImage={img1}
-              productName={"YIHI SXMINI G CLASS V2 200W"}
-              price={"16,500.00"}
-            />
-            <Card
-             w={"md:w-64"}
-              productImage={img1}
-              productName={"YIHI SXMINI G CLASS V2 200W"}
-              price={"16,500.00"}
-            />
-            <Card
-              w={"md:w-64"}
-              productImage={img1}
-              productName={"YIHI SXMINI G CLASS V2 200W"}
-              price={"16,500.00"}
-            />
-            <Card
-             w={"md:w-64"}
-              productImage={img1}
-              productName={"YIHI SXMINI G CLASS V2 200W"}
-              price={"16,500.00"}
-            />
-            
+            {
+              allProducts.slice(0,6).map((product )=> <Card key={product._id} product={product}/>)
+            }  
           </div>
           <div className="text-center">
-            <button className="btn btn-warning mx-auto my-4">View All</button>
+            <Link to="/Dashboard/High End"><button className="btn btn-warning mx-auto my-4">View All</button></Link>
           </div>
         </div>
+       </Parallax>
       </div>
     </>
   );

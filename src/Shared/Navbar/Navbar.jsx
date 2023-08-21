@@ -5,16 +5,21 @@ import Swal from "sweetalert2";
 import PathName from "../../Components/PathName/PathName";
 import { FaHome } from "react-icons/fa";
 import { MdOutlinePayments } from "react-icons/md";
+import navImg from "../../assets/photos/NavLogo.png";
 
 const Navbar = () => {
-  
-  const Devices = ["High End", "Box Mods", "Starter Kits", "Pod System"]
-  const Atomizers = ["Rebuildables", "SUB-OHM Tanks"]
-  const E_Liquids = ["Nicsalt", "Free Base"]
-  const Accessories = ["Replacement Coils, Pod & RBA", "Vape Accessories", "Rebuildable Materials", "Batteries & Chargers"]
+  const Devices = ["High End", "Box Mods", "Starter Kits", "Pod System"];
+  const Atomizers = ["Rebuildables", "SUB-OHM Tanks"];
+  const E_Liquids = ["Nicsalt", "Free Base"];
+  const Accessories = [
+    "Replacement Coils, Pod & RBA",
+    "Vape Accessories",
+    "Rebuildable Materials",
+    "Batteries & Chargers",
+  ];
 
   const location = useLocation();
-  const isDashboard = location.pathname.includes('/Dashboard');
+  const isDashboard = location.pathname.includes("/Dashboard");
 
   const { user, logOut } = useContext(AuthContext);
   const handleLogout = () => {
@@ -36,39 +41,50 @@ const Navbar = () => {
 
   const HomeNavItems = (
     <>
-    <PathName heading="Devices" titles={Devices}/>
-    <PathName heading="Atomizers" titles={Atomizers}/>
-    <PathName heading="E-Liquids" titles={E_Liquids}/>
-    <PathName heading="Accessories" titles={Accessories}/>   
-       <li>
-         <NavLink  className={({ isActive }) =>
-           isActive
-             ? "text-blue-600 font-bold"
-             : ""
-         }  to="/Dashboard/disposables">Disposables</NavLink>
-       </li>
-     </>
+      <PathName heading="Devices" titles={Devices} />
+      <PathName heading="Atomizers" titles={Atomizers} />
+      <PathName heading="E-Liquids" titles={E_Liquids} />
+      <PathName heading="Accessories" titles={Accessories} />
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-blue-600 font-bold" : ""
+          }
+          to="/Dashboard/disposables"
+        >
+          Disposables
+        </NavLink>
+      </li>
+    </>
   );
 
   const DashboardNavItems = (
     <>
-   <li>
-         <NavLink  className={({ isActive }) =>
-           isActive
-             ? "text-blue-600 font-bold"
-             : ""
-         }  to="/"><FaHome/>Home</NavLink>
-       </li>
-   <li>
-         <NavLink  className={({ isActive }) =>
-           isActive
-             ? "text-blue-600 font-bold"
-             : ""
-         }  to="/"><MdOutlinePayments/>Payment History</NavLink>
-       </li>
-     </>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-blue-600 font-bold" : ""
+          }
+          to="/"
+        >
+          <FaHome />
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          className={({ isActive }) =>
+            isActive ? "text-blue-600 font-bold" : ""
+          }
+          to="/"
+        >
+          <MdOutlinePayments />
+          Payment History
+        </NavLink>
+      </li>
+    </>
   );
- 
+
   return (
     <div className="navbar bg-base-200">
       <div className="navbar-start">
@@ -93,15 +109,17 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52"
           >
-           { isDashboard? DashboardNavItems : HomeNavItems }
+            {isDashboard ? DashboardNavItems : HomeNavItems}
           </ul>
         </div>
         <Link to="/">
-          <a className="btn btn-ghost normal-case text-xl">Vape-Cafe</a>
+          <img className="h-20 md:ms-6" src={navImg} alt="Logo" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex z-10">
-        <ul className="menu menu-horizontal px-1 ">{ isDashboard? DashboardNavItems : HomeNavItems }</ul>
+        <ul className="menu menu-horizontal px-1 ">
+          {isDashboard ? DashboardNavItems : HomeNavItems}
+        </ul>
       </div>
       <div className="navbar-end">
         {user?.photoURL && (

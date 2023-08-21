@@ -10,7 +10,6 @@ AOS.init();
 const ViewDetails = () => {
   const { id } = useParams();
   const [productDetails, setProductDetails] = useState([]);
-  console.log(productDetails);
   const { image, name, price, description, features, packageIncludes } =
     productDetails;
   useEffect(() => {
@@ -18,9 +17,11 @@ const ViewDetails = () => {
       setProductDetails(response.data);
     });
   }, [id]);
+
+
+
   return (
     <div data-aos="fade-up">
-        <RotationCarousel/>
       <div className="md:flex">
         <div
           data-aos="fade-right"
@@ -64,6 +65,9 @@ const ViewDetails = () => {
           <p>{packageIncludes}</p>
         </div>
       </section>
+      <div className="my-5">
+      <RotationCarousel/>
+      </div>
     </div>
   );
 };
