@@ -36,13 +36,13 @@ const ViewDetails = () => {
         <div className="p-5 md:w-6/12">
           <p
             data-aos="fade-left"
-            data-aos-duration="3000"
+            data-aos-duration="2000"
             className="font-bold text-3xl"
           >
             {name}
           </p>
           <p
-            data-aos="flip-right"
+            data-aos="fade-left"
             data-aos-duration="3000"
             className="font-bold text-3xl my-4 text-yellow-600"
           >
