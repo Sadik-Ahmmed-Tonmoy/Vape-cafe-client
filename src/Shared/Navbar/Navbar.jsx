@@ -101,7 +101,7 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex z-10">
-        <ul className="menu menu-horizontal px-1">{ isDashboard? DashboardNavItems : HomeNavItems }</ul>
+        <ul className="menu menu-horizontal px-1 ">{ isDashboard? DashboardNavItems : HomeNavItems }</ul>
       </div>
       <div className="navbar-end">
         {user?.photoURL && (

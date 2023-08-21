@@ -18,15 +18,15 @@ const Dashboard = () => {
           {/* Page content here */}
           <label
             htmlFor="my-drawer-2"
-            className="btn btn-primary drawer-button lg:hidden mt-5"
+            className="btn btn-primary drawer-button lg:hidden mt-5 ms-5"
           >
-            <GiHamburgerMenu />
+            <GiHamburgerMenu />Category
           </label>
           <Outlet />
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 bg-base-200 text-base-content min-h-screen w-52 md:w-80">
+          <ul className="menu p-4 bg-base-200 text-base-content min-h-screen w-52 md:w-80 mt-16 md:mt-0">
             {/* Sidebar content here */}
             <>
            <PathName heading="Devices" titles={Devices}/>

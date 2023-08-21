@@ -1,10 +1,11 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
-import Card from "../../Components/Card/Card";
+import Card from "../../../Components/Card/Card";
 import { useEffect, useState } from "react";
 
 const ComponentsHome = () => {
   const { category } = useParams();
+  console.log(category);
   const [products, setProducts] = useState([]);
 
   console.log(category);
@@ -21,6 +22,7 @@ const ComponentsHome = () => {
       {products.map((product) => (
         <Card
           key={product._id}
+          product={product}
           productImage={product.image}
           productName={product.name}
           price={product.price}
