@@ -8,6 +8,7 @@ import SignUp from './../Pages/SignUp/SignUp';
 import ComponentsHome from '../Pages/Dashboard/ComponentsHome/ComponentsHome';
 import Dashboard from './../Layout/Dashboard/Dashboard';
 import ViewDetails from "../Pages/Dashboard/ViewDetails/ViewDetails";
+import Cart from './../Pages/Dashboard/Cart/Cart';
 
   export const router = createBrowserRouter([
     {
@@ -40,6 +41,10 @@ import ViewDetails from "../Pages/Dashboard/ViewDetails/ViewDetails";
         {
           path: "/Dashboard/productDetails/:id",
           element: <ViewDetails/>,
+        },
+        {
+          path: "/Dashboard/cart",
+          element: <Cart/>,
         },
       ]
     }

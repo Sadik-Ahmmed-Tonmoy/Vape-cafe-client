@@ -3,11 +3,13 @@ import { Link, NavLink, useLocation } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import PathName from "../../Components/PathName/PathName";
-import { FaHome } from "react-icons/fa";
+import { FaCartArrowDown, FaHome } from "react-icons/fa";
 import { MdOutlinePayments } from "react-icons/md";
 import navImg from "../../assets/photos/NavLogo.png";
+import useCart from "../../Hooks/useCart";
 
 const Navbar = () => {
+  // nav Titles
   const Devices = ["High End", "Box Mods", "Starter Kits", "Pod System"];
   const Atomizers = ["Rebuildables", "SUB-OHM Tanks"];
   const E_Liquids = ["Nicsalt", "Free Base"];
@@ -20,8 +22,9 @@ const Navbar = () => {
 
   const location = useLocation();
   const isDashboard = location.pathname.includes("/Dashboard");
-
   const { user, logOut } = useContext(AuthContext);
+
+  // logout user
   const handleLogout = () => {
     logOut()
       .then(() => {
@@ -39,6 +42,7 @@ const Navbar = () => {
       });
   };
 
+  // link to directions page
   const HomeNavItems = (
     <>
       <PathName heading="Devices" titles={Devices} />
@@ -58,8 +62,27 @@ const Navbar = () => {
     </>
   );
 
+  // cart data
+  // axios.get(`http://localhost:5000/cart/data/${user?.email}`).then(res => {
+  //   console.log(res.data);
+  // })
+  const [cartData] = useCart();
+  console.log(cartData);
+
   const DashboardNavItems = (
     <>
+      {user ? (
+        <button
+          onClick={handleLogout}
+          className="btn btn-outline btn-primary md:hidden block"
+        >
+          Logout
+        </button>
+      ) : (
+        <button className="btn btn-outline btn-primary md:hidden block">
+          <Link to="/userLogin">Login</Link>
+        </button>
+      )}
       <li>
         <NavLink
           className={({ isActive }) =>
@@ -122,6 +145,19 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
+        {/* cart */}
+
+        {user && cartData ? (
+          <Link to="/Dashboard/cart">
+            <span className="badge badge-primary md:p-4 btn">
+              {" "}
+              <FaCartArrowDown className="me-1" /> +{cartData?.length || 0}
+            </span>
+          </Link>
+        ) : (
+          ""
+        )}
+
         {user?.photoURL && (
           <img
             referrerPolicy="no-referrer"
@@ -134,12 +170,12 @@ const Navbar = () => {
         {user ? (
           <button
             onClick={handleLogout}
-            className="btn btn-outline btn-primary"
+            className="btn btn-outline btn-primary hidden md:block"
           >
             Logout
           </button>
         ) : (
-          <button className="btn btn-outline btn-primary">
+          <button className="btn btn-outline btn-primary hidden md:block">
             <Link to="/userLogin">Login</Link>
           </button>
         )}
