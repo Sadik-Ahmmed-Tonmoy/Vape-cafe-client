@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, ScrollRestoration, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import loginLottie from "../../assets/Lottie/53888-login-icon.json";
@@ -70,7 +70,7 @@ const Login = () => {
             />
           </div>
         </div>
-        <div className="card flex-shrink-0 md:w-6/12 shadow-2xl bg-base-100">
+        <div className="card flex-shrink-0 md:w-7/12 shadow-2xl bg-base-100">
           <h3 className="mt-4 ms-6 font-bold text-3xl text-center">
             Please Login
           </h3>
@@ -114,13 +114,14 @@ const Login = () => {
           </form>
           <p className="ms-4">
             Dont have account?
-            <span className="text-blue-600">
+            <span className="text-blue-600 ms-1">
               <Link to="/signUp">Create Now</Link>
             </span>
           </p>
           <SocialLogin />
         </div>
       </div>
+      <ScrollRestoration />
     </div>
   );
 };

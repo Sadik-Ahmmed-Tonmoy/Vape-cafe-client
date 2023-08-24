@@ -7,7 +7,7 @@ import "./Home.css";
 import { Fade, Slide } from "react-awesome-reveal";
 import useAllProduct from "../../../Hooks/useAllProduct";
 import { Parallax } from "react-parallax";
-import { Link } from "react-router-dom";
+import { Link, ScrollRestoration } from "react-router-dom";
 import Marquee from "react-fast-marquee";
 import AOS from "aos";
 import "aos/dist/aos.css";
@@ -114,6 +114,7 @@ const Home = () => {
           </div>
         </Parallax>
       </div>
+      <ScrollRestoration />
     </>
   );
 };

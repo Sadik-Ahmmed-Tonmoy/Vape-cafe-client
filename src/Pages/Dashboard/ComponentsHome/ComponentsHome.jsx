@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { ScrollRestoration, useParams } from "react-router-dom";
 import Card from "../../../Components/Card/Card";
 import { useEffect, useState } from "react";
 import { Slide } from "react-awesome-reveal";
@@ -34,6 +34,7 @@ const ComponentsHome = () => {
           />
         ))}
       </div>
+      <ScrollRestoration />
     </div>
   );
 };

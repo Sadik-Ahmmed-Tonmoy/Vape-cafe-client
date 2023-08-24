@@ -1,4 +1,4 @@
-import { NavLink, Outlet } from "react-router-dom";
+import { NavLink, Outlet, ScrollRestoration } from "react-router-dom";
 import { GiHamburgerMenu } from "react-icons/gi";
 import PathName from "../../Components/PathName/PathName";
 import Navbar from "../../Shared/Navbar/Navbar";
@@ -66,6 +66,7 @@ const Dashboard = () => {
           </ul>
         </div>
       </div>
+      <ScrollRestoration />
     </div>
   );
 };

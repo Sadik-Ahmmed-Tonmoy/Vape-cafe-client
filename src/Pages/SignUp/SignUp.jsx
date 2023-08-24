@@ -1,4 +1,4 @@
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, ScrollRestoration, useLocation, useNavigate } from "react-router-dom";
 import Lottie from "lottie-react";
 import SocialLogin from "../../Shared/SocialLogin/SocialLogin";
 import loginLottie from "../../assets/Lottie/53888-login-icon.json";
@@ -208,6 +208,7 @@ const SignUp = () => {
           <SocialLogin />
         </div>
       </div>
+      <ScrollRestoration />
     </div>
   );
 };
