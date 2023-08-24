@@ -1,4 +1,4 @@
-import axios from "axios";
+
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../AuthProvider/AuthProvider";
 
@@ -8,9 +8,14 @@ const useCart = () => {
 
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/cart/data/${user?.email}`).then((res) => {
-      setCartData(res.data);
-    });
+    fetch(`http://localhost:5000/cart/data/${user?.email}`)
+      .then((response) => response.json())
+      .then((data) => {
+        setCartData(data);
+      })
+      .catch((error) => {
+        console.error('Error fetching cart data:', error);
+      });
   }, [user?.email]);
   
   return [cartData];

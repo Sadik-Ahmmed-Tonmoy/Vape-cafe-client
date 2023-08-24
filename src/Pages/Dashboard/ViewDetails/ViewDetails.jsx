@@ -31,6 +31,7 @@ const ViewDetails = () => {
   console.log(count);
   const dispatch = useDispatch();
 
+  
   // handle add to cart
   const handleAddToCart = (item) => {
     dispatch(increment());
@@ -124,7 +125,7 @@ const ViewDetails = () => {
           <p>{packageIncludes}</p>
         </div>
       </section>
-      <div className="my-5">
+      <div className="my-5 w-36">
         <RotationCarousel />
       </div>
     </div>

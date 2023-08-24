@@ -54,7 +54,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             isActive ? "text-blue-600 font-bold" : ""
           }
-          to="/Dashboard/disposables"
+          to="/Dashboard/Disposables"
         >
           Disposables
         </NavLink>

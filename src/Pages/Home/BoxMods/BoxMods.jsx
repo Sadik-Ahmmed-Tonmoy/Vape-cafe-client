@@ -11,11 +11,8 @@ import Card from "../../../Components/Card/Card";
 
 import "./boxStyles.css";
 
-import img1 from "../../../assets/BoxModsPhotos/G-Class-V2.jpeg";
-import img2 from "../../../assets/BoxModsPhotos/SL-Class-V2.jpeg";
-import img3 from "../../../assets/BoxModsPhotos/Thelema-Solo-Dna100c-TVC.jpg";
-import img4 from "../../../assets/BoxModsPhotos/Tomahawk-SBS.jpg";
 import useAllProduct from "../../../Hooks/useAllProduct";
+import { Link } from "react-router-dom";
 
 const BoxMods = () => {
   const [allProducts] = useAllProduct();
@@ -27,14 +24,14 @@ const BoxMods = () => {
         modules={[EffectCards]}
         className="mySwiper"
       >
-        {allProducts.map((product) => (
+        {allProducts.slice(7 ,18).map((product) => (
           <SwiperSlide key={product._id}>
             <Card product={product} />
           </SwiperSlide>
         ))}
       </Swiper>
       <div className="text-center">
-        <button className="btn btn-warning mx-auto">View All</button>
+      <Link to="/Dashboard/Box Mods"><button className="btn btn-warning mx-auto my-2">View All</button></Link>
       </div>
     </div>
   );

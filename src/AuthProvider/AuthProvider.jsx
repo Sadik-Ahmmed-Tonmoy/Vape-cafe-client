@@ -16,6 +16,7 @@ const auth = getAuth(app);
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
+  const [refetch, setRefetch] = useState(false);
   const googleProvider = new GoogleAuthProvider();
 
   //   google login
@@ -66,6 +67,8 @@ return signInWithEmailAndPassword(auth, email, password)
   const authInfo = {
     user,
     loading,
+    refetch,
+    setRefetch,
     createUser,
     updateUserNameAndImage,
     logIn,

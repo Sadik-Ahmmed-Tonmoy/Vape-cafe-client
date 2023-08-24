@@ -58,7 +58,7 @@ const Card = ({ product}) => {
 
   return (
 <Fade>
-<div className={`card w-auto bg-base-100 shadow-xl m-4`}>
+<div className={`card w-auto bg-base-100 shadow-xl m-4 transition-transform duration-300 transform-gpu hover:scale-105 hover:text-blue-300`}>
       <figure className="px-5 pt-5">
         <img
           src={image}
