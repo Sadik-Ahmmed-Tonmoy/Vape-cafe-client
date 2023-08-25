@@ -6,7 +6,7 @@ const useAllProduct = () => {
     const [allProducts, setAllProducts] = useState([])
     const [loading, setLoading] = useState(true)
    useEffect(()=> {
-    axios.get("http://localhost:5000/products")
+    axios.get("https://vape-cafe-server.vercel.app/products")
     .then(response =>{
         setAllProducts(response.data)
         setLoading(false)

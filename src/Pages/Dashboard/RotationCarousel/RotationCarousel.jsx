@@ -24,7 +24,7 @@ const RotationCarousel = () => {
   const [allProducts, setAllProducts] = useState([]);
 
   useEffect(() => {
-    axios.get("http://localhost:5000/products").then((response) => {
+    axios.get("https://vape-cafe-server.vercel.app/products").then((response) => {
       setAllProducts(response.data);
     });
   }, []);

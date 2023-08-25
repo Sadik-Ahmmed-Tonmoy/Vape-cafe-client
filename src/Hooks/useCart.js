@@ -8,7 +8,7 @@ const useCart = () => {
 
 
   useEffect(() => {
-    fetch(`http://localhost:5000/cart/data/${user?.email}`)
+    fetch(`https://vape-cafe-server.vercel.app/cart/data/${user?.email}`)
       .then((response) => response.json())
       .then((data) => {
         setCartData(data);

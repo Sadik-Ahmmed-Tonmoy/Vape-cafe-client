@@ -20,7 +20,7 @@ const Dashboard = () => {
       <Navbar />
       <div className="drawer lg:drawer-open">
         <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-        <div className="drawer-content">
+        <div className="drawer-content bg-gradient-to-r from-indigo-900 via-sky-900 ">
           {/* Page content here */}
           <label
             htmlFor="my-drawer-2"
@@ -33,7 +33,7 @@ const Dashboard = () => {
         </div>
         <div className="drawer-side">
           <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-          <ul className="menu p-4 bg-base-200 text-base-content min-h-screen w-52 md:w-80 mt-16 md:mt-0">
+          <ul className="menu p-4 bg-slate-900 text-white min-h-screen w-52 md:w-80 mt-16 md:mt-0">
             {/* Sidebar content here */}
             <>
               <Slide direction="left">
@@ -50,7 +50,7 @@ const Dashboard = () => {
               <PathName heading="Accessories" titles={Accessories} />
               </Slide>
               <Slide direction="left" duration="3000">
-              <li>
+              <li className="hover:bg-white rounded-md">
                 <NavLink
                   className={({ isActive }) =>
                     isActive ? "text-blue-600 font-bold" : ""

@@ -2,6 +2,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
 import { useState } from 'react';
+import { Slide } from "react-awesome-reveal";
 
 const AddProduct = () => {
 const [loading, setLoading] = useState(false)
@@ -52,7 +53,7 @@ const productType = watch("productType")
         
         const productInfo = {...allInfo, image: data.data.display_url};
 
-        axios.post("http://localhost:5000/addProduct", productInfo).then((data) => {
+        axios.post("https://vape-cafe-server.vercel.app/addProduct", productInfo).then((data) => {
             setLoading(false)
           if (data.data.insertedId){
             setLoading(false)
@@ -134,7 +135,7 @@ const productType = watch("productType")
                 </select>
               </div>
               
-{productType==="Device" &&   <div className="form-control w-full">
+{productType==="Device" &&   <Slide direction="right"><div className="form-control w-full">
                 <label className="label">
                   <span className="label-text">Category</span>
                 </label>
@@ -147,10 +148,10 @@ const productType = watch("productType")
                   </option>
                   {devices.map((item,i)=> <option key={i}>{item}</option>)}
                 </select>
-              </div>}
+              </div></Slide>}
 
 
-{productType==="Atomizer" && <div className="form-control w-full">
+{productType==="Atomizer" && <Slide direction="right"><div className="form-control w-full">
                 <label className="label">
                   <span className="label-text">Category</span>
                 </label>
@@ -163,8 +164,8 @@ const productType = watch("productType")
                   </option>
                   {atomizers.map((item,i)=> <option key={i}>{item}</option>)}
                 </select>
-              </div>}
-{productType==="E-Liquids" && <div className="form-control w-full">
+              </div></Slide>}
+{productType==="E-Liquids" && <Slide  direction="right"><div className="form-control w-full">
                 <label className="label">
                   <span className="label-text">Category</span>
                 </label>
@@ -177,8 +178,8 @@ const productType = watch("productType")
                   </option>
                   {e_Liquids.map((item,i)=> <option key={i}>{item}</option>)}
                 </select>
-              </div>}
-{productType==="Accessories" && <div className="form-control w-full">
+              </div></Slide>}
+{productType==="Accessories" && <Slide direction="right"><div className="form-control w-full">
                 <label className="label">
                   <span className="label-text">Category</span>
                 </label>
@@ -191,8 +192,8 @@ const productType = watch("productType")
                   </option>
                   {accessories.map((item,i)=> <option key={i}>{item}</option>)}
                 </select>
-              </div>}
-{productType==="Disposables" && <div className="form-control w-full">
+              </div></Slide>}
+{productType==="Disposables" && <Slide direction="right"><div className="form-control w-full">
                 <label className="label">
                   <span className="label-text">Category</span>
                 </label>
@@ -205,7 +206,7 @@ const productType = watch("productType")
                   </option>
                <option>Disposables</option>
                 </select>
-              </div>}
+              </div></Slide>}
               
               <div className="form-control">
                 <label className="label">

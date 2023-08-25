@@ -49,7 +49,7 @@ const Navbar = () => {
       <PathName heading="Atomizers" titles={Atomizers} />
       <PathName heading="E-Liquids" titles={E_Liquids} />
       <PathName heading="Accessories" titles={Accessories} />
-      <li>
+      <li className="hover:bg-white rounded-md">
         <NavLink
           className={({ isActive }) =>
             isActive ? "text-blue-600 font-bold" : ""
@@ -63,7 +63,7 @@ const Navbar = () => {
   );
 
   // cart data
-  // axios.get(`http://localhost:5000/cart/data/${user?.email}`).then(res => {
+  // axios.get(`https://vape-cafe-server.vercel.app/cart/data/${user?.email}`).then(res => {
   //   console.log(res.data);
   // })
   const [cartData] = useCart();
@@ -79,11 +79,13 @@ const Navbar = () => {
           Logout
         </button>
       ) : (
-        <button className="btn btn-outline btn-primary md:hidden block">
-          <Link to="/userLogin">Login</Link>
-        </button>
+        <Link to="/userLogin">
+          <button className="btn btn-outline btn-primary md:hidden block">
+            Login
+          </button>
+        </Link>
       )}
-      <li>
+      <li className="hover:bg-yellow-50 rounded-md">
         <NavLink
           className={({ isActive }) =>
             isActive ? "text-blue-600 font-bold" : ""
@@ -94,7 +96,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li>
+      <li className="hover:bg-yellow-50 rounded-md">
         <NavLink
           className={({ isActive }) =>
             isActive ? "text-blue-600 font-bold" : ""
@@ -109,7 +111,7 @@ const Navbar = () => {
   );
 
   return (
-    <div className="navbar bg-base-200">
+    <div className="navbar bg-slate-900 text-white">
       <div className="navbar-start">
         <div className="dropdown z-10">
           <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -128,9 +130,10 @@ const Navbar = () => {
               />
             </svg>
           </label>
+          {/* mobile */}
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-slate-800  rounded-box w-52"
           >
             {isDashboard ? DashboardNavItems : HomeNavItems}
           </ul>
@@ -141,6 +144,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-center hidden lg:flex z-10">
         <ul className="menu menu-horizontal px-1 ">
+         
           {isDashboard ? DashboardNavItems : HomeNavItems}
         </ul>
       </div>
@@ -149,7 +153,7 @@ const Navbar = () => {
 
         {user && cartData ? (
           <Link to="/Dashboard/cart">
-            <span className="badge badge-primary md:p-4 btn">
+            <span className="badge badge-primary md:p-4 btn hover:text-black">
               {" "}
               <FaCartArrowDown className="me-1" /> +{cartData?.length || 0}
             </span>

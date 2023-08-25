@@ -7,7 +7,7 @@ const Cart = () => {
   const [cartData] = useCart();
   const handleDelete = (id) => {
     console.log(id);
-    axios.delete(`http://localhost:5000/cart/delete/${id}`).then((res) => {
+    axios.delete(`https://vape-cafe-server.vercel.app/cart/delete/${id}`).then((res) => {
         console.log(res.data);
         if(res.data.deletedCount ===1){
             Swal.fire({
@@ -25,7 +25,7 @@ const Cart = () => {
       {cartData.map((item, i) => (
         <div
           key={i}
-          className="flex gap-3 m-2 border p-1 md:w-6/12 rounded-md items-center justify-between"
+          className="flex gap-3 m-2 border p-1 md:w-6/12 rounded-md items-center justify-between bg-gradient-to-b from-indigo-900 via-slate-950 to-black"
         >
           <div className="flex">
             <div className="avatar">

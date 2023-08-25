@@ -22,7 +22,7 @@ const ViewDetails = () => {
     productDetails;
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/productDetails/${id}`).then((response) => {
+    axios.get(`https://vape-cafe-server.vercel.app/productDetails/${id}`).then((response) => {
       setProductDetails(response.data);
     });
   }, [id]);
@@ -46,7 +46,7 @@ const ViewDetails = () => {
       };
 
       axios
-        .post("http://localhost:5000/addToCart", cartData)
+        .post("https://vape-cafe-server.vercel.app/addToCart", cartData)
         .then((response) => {
           if (response.data.insertedId) {
             Swal.fire({
@@ -77,14 +77,14 @@ const ViewDetails = () => {
   };
 
   return (
-    <div data-aos="fade-up">
+    <div data-aos="fade-up" className="text-white">
       <div className="md:flex">
         <div
           data-aos="fade-right"
           data-aos-duration="3000"
           className="md:w-5/12 m-3"
         >
-          <img data-aos="fade-up" data-aos-duration="3000" src={image} alt="" />
+          <img className="rounded-ss-2xl" data-aos="fade-up" data-aos-duration="3000" src={image} alt="" />
 
           <button
             onClick={() => handleAddToCart(productDetails)}
@@ -125,9 +125,6 @@ const ViewDetails = () => {
           <p>{packageIncludes}</p>
         </div>
       </section>
-      <div className="my-5 w-36">
-        <RotationCarousel />
-      </div>
     </div>
   );
 };

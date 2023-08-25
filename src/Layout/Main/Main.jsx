@@ -6,7 +6,7 @@ const Main = () => {
   const navigation = useNavigation()
 
   return (
-    <>
+    <div className="overflow-hidden">
       <Navbar />
       <div className="min-h-[calc(100vh-300px)]">
       {/* {loading && <progress className="progress w-72"></progress>} */}
@@ -15,7 +15,7 @@ const Main = () => {
       </div>
       <Footer />
       <ScrollRestoration />
-    </>
+    </div>
   );
 };
 

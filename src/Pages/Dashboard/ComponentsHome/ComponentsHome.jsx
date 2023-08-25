@@ -11,7 +11,7 @@ const ComponentsHome = () => {
 
   console.log(category);
   useEffect(() => {
-    axios.get(`http://localhost:5000/products/${category}`).then((response) => {
+    axios.get(`https://vape-cafe-server.vercel.app/products/${category}`).then((response) => {
       console.log(response.data);
       setProducts(response.data);
     });
@@ -23,7 +23,7 @@ const ComponentsHome = () => {
           {category}
         </h3>
       </Slide>
-      <div className="md:grid grid-cols-3">
+      <div className="md:grid grid-cols-3 gap-3">
         {products.map((product) => (
           <Card
             key={product._id}

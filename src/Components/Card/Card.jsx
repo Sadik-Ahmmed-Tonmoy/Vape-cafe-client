@@ -5,17 +5,15 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-
-const Card = ({ product}) => {
-  const {image, name, price, _id}=product;
+const Card = ({ product }) => {
+  const { image, name, price, _id } = product;
 
   const navigate = useNavigate();
   const location = useLocation();
 
-  const {user} = useContext(AuthContext)
-   // handle add to cart
-   const handleAddToCart = (item) => {
-
+  const { user } = useContext(AuthContext);
+  // handle add to cart
+  const handleAddToCart = (item) => {
     if (user?.email) {
       const cartData = {
         productId: item._id,
@@ -26,7 +24,7 @@ const Card = ({ product}) => {
       };
 
       axios
-        .post("http://localhost:5000/addToCart", cartData)
+        .post("https://vape-cafe-server.vercel.app/addToCart", cartData)
         .then((response) => {
           if (response.data.insertedId) {
             Swal.fire({
@@ -38,9 +36,7 @@ const Card = ({ product}) => {
             });
           }
         });
-    } 
-    
-    else {
+    } else {
       Swal.fire({
         title: "Please login to order the product",
         icon: "warning",
@@ -50,38 +46,39 @@ const Card = ({ product}) => {
         confirmButtonText: "Login Now!",
       }).then((result) => {
         if (result.isConfirmed) {
-          navigate("/userLogin", { state: { from: location } })
+          navigate("/userLogin", { state: { from: location } });
         }
-      })
+      });
     }
   };
 
   return (
-<Fade>
-<div className={`card w-auto bg-base-100 shadow-xl m-4 transition-transform duration-300 transform-gpu hover:scale-105 hover:text-blue-300`}>
-      <figure className="px-5 pt-5">
-        <img
-          src={image}
-          alt={name}
-          className="rounded-xl"
-        />
-      </figure>
-      <div className="card-body items-center text-center">
-        <h2 className="card-title">{name}</h2>
-        <p className="text-yellow-500"> BDT {price}</p>
-        <div className="card-actions flex justify-between w-full">
-          
-        <button
-            onClick={() => handleAddToCart(product)}
-            className="btn btn-primary hover:bg-black "
-          >
-            Add To Cart
-          </button>
-          <button className="btn btn-primary hover:bg-black"><Link to={`/Dashboard/productDetails/${_id}`}>View Details</Link></button>
+    <Fade>
+      <div
+        className={`card w-auto bg-slate-900 text-white shadow-xl m-3 transition-transform duration-300 transform-gpu hover:scale-105 hover:text-blue-300`}
+      >
+        <figure className="px-5 pt-5">
+          <img src={image} alt={name} className="rounded-xl" />
+        </figure>
+        <div className="card-body items-center text-center">
+          <h2 className="card-title md:h-20">{name}</h2>
+          <p className="text-yellow-500"> BDT {price}</p>
+          <div className="card-actions flex justify-between w-full min-w">
+            <button
+              onClick={() => handleAddToCart(product)}
+              className="btn btn-primary p-2 bg-gradient-to-r from-primary to-blue-900 hover:from-black hover:to-slate-800"
+            >
+              Add To Cart
+            </button>
+            <Link to={`/Dashboard/productDetails/${_id}`}>
+              <button className="btn btn-primary p-2 bg-gradient-to-r from-blue-900 to-primary hover:from-black hover:to-slate-800">
+                View Details
+              </button>
+            </Link>
+          </div>
         </div>
       </div>
-    </div>
-</Fade>
+    </Fade>
   );
 };
 

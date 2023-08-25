@@ -8,7 +8,7 @@ const saveUserToDB = (user) => {
     role: "customer",
   };
   axios
-    .post("http://localhost:5000/users", currentUser)
+    .post("https://vape-cafe-server.vercel.app/users", currentUser)
     .then((res) => console.log(res));
 };
 
