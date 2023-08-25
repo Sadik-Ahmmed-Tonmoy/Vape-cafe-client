@@ -178,10 +178,10 @@ const Navbar = () => {
           >
             Logout
           </button>
-        ) : (
+        ) : ( <NavLink to="/userLogin">
           <button className="btn btn-outline btn-primary hidden md:block">
-            <Link to="/userLogin">Login</Link>
-          </button>
+           Login
+          </button></NavLink>
         )}
       </div>
     </div>
