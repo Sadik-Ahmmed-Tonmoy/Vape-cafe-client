@@ -10,6 +10,8 @@ import Dashboard from './../Layout/Dashboard/Dashboard';
 import ViewDetails from "../Pages/Dashboard/ViewDetails/ViewDetails";
 import Cart from './../Pages/Dashboard/Cart/Cart';
 import AddProduct from './../Pages/Dashboard/AddProduct/AddProduct';
+import PaymentSuccess from "../Pages/Home/PaymentSuccess/PaymentSuccess";
+import PaymentFailed from "../Pages/Home/PaymentFailed/PaymentFailed";
 
   export const router = createBrowserRouter([
     {
@@ -28,6 +30,14 @@ import AddProduct from './../Pages/Dashboard/AddProduct/AddProduct';
         {
           path: "/signUp",
           element: <SignUp/>,
+        },
+        {
+          path: "/payment/success/:id",
+          element: <PaymentSuccess/>,
+        },
+        {
+          path: "/payment/fail/:id",
+          element: <PaymentFailed/>,
         },
       ],
     },

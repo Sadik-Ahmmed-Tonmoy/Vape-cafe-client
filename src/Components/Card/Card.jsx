@@ -4,9 +4,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
 import Swal from "sweetalert2";
+import useCart from "../../Hooks/useCart";
 
 const Card = ({ product }) => {
   const { image, name, price, _id } = product;
+  const [cart, refetch] = useCart()
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -27,6 +29,7 @@ const Card = ({ product }) => {
         .post("https://vape-cafe-server.vercel.app/addToCart", cartData)
         .then((response) => {
           if (response.data.insertedId) {
+            refetch()
             Swal.fire({
               position: "top-end",
               icon: "success",

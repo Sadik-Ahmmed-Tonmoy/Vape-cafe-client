@@ -4,7 +4,7 @@ import { AuthContext } from "../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
 import PathName from "../../Components/PathName/PathName";
 import { FaCartArrowDown, FaHome } from "react-icons/fa";
-import { MdOutlinePayments } from "react-icons/md";
+// import { MdOutlinePayments } from "react-icons/md";
 import navImg from "../../assets/photos/NavLogo.png";
 import useCart from "../../Hooks/useCart";
 
@@ -23,6 +23,7 @@ const Navbar = () => {
   const location = useLocation();
   const isDashboard = location.pathname.includes("/Dashboard");
   const { user, logOut } = useContext(AuthContext);
+  
 
   // logout user
   const handleLogout = () => {
@@ -96,7 +97,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-      <li className="hover:bg-yellow-50 rounded-md">
+      {/* <li className="hover:bg-yellow-50 rounded-md">
         <NavLink
           className={({ isActive }) =>
             isActive ? "text-blue-600 font-bold" : ""
@@ -106,7 +107,7 @@ const Navbar = () => {
           <MdOutlinePayments />
           Payment History
         </NavLink>
-      </li>
+      </li> */}
     </>
   );
 

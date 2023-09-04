@@ -13,6 +13,7 @@
     "@egjs/react-flicking": "^4.11.0",
     "@emotion/react": "^11.11.1",
     "@reduxjs/toolkit": "^1.9.5",
+    "@tanstack/react-query": "^4.33.0",
     "aos": "^2.3.4",
     "axios": "^1.4.0",
     "firebase": "^10.2.0",

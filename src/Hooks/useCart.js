@@ -1,24 +1,20 @@
-
-import { useContext, useEffect, useState } from "react";
-import { AuthContext } from "../AuthProvider/AuthProvider";
+import { useQuery } from '@tanstack/react-query'
+import { useContext } from 'react';
+import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const useCart = () => {
-  const [cartData, setCartData] = useState([]);
-  const { user } = useContext(AuthContext);
+  const { user } = useContext(AuthContext)
 
 
-  useEffect(() => {
-    fetch(`https://vape-cafe-server.vercel.app/cart/data/${user?.email}`)
-      .then((response) => response.json())
-      .then((data) => {
-        setCartData(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching cart data:', error);
-      });
-  }, [user?.email]);
-  
-  return [cartData];
+  const {  data: cart = [], refetch} = useQuery({
+    queryKey: ['carts', user?.email],
+    queryFn: async () => {
+        const response = await fetch(`https://vape-cafe-server.vercel.app/cart?email=${user?.email}`)
+        return response.json();
+    },
+  })
+
+  return [cart, refetch]
 };
 
 export default useCart;

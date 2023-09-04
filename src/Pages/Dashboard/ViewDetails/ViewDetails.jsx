@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { increment } from "../../../Redux/CounterSlice/CounterSlice";
 import { AuthContext } from "./../../../AuthProvider/AuthProvider";
 import Swal from "sweetalert2";
+import useCart from "../../../Hooks/useCart";
 AOS.init();
 
 
@@ -17,6 +18,7 @@ const ViewDetails = () => {
   const location = useLocation();
   const { id } = useParams();
   const { user } = useContext(AuthContext);
+  const [, refetch] = useCart()
   const [productDetails, setProductDetails] = useState([]);
   const { image, name, price, description, features, packageIncludes } =
     productDetails;
@@ -49,6 +51,7 @@ const ViewDetails = () => {
         .post("https://vape-cafe-server.vercel.app/addToCart", cartData)
         .then((response) => {
           if (response.data.insertedId) {
+            refetch()
             Swal.fire({
               position: "top-end",
               icon: "success",
